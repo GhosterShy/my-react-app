@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Main from './pages/main/main';
+import Container from './pages/Container/Container';
+import Category from './pages/Category/Category';
+import CategoryNews from './pages/CategoryNews/CategoryNews';
+import AddPost from './pages/AddPost/AddPost';
+import "./App.css"
+import { BrowserRouter } from 'react-router-dom';
+import AppRout from './Components/AppRoute';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+ <BrowserRouter>
+   <AppRout />
+</BrowserRouter>
+
+    // <Router>
+    //   <div className="App">
+       
+    //     <main className="main-content">
+    //       <Routes>
+    //         <Route path="/" element={<Main />} />
+    //         <Route path="/container/:id" element={<Container />} />
+    //         <Route path="/category" element={<Category />} />
+    //         <Route path="/category/:id" element={<CategoryNews/>} />
+    //         <Route path="/AddPost" element={<AddPost/>} />
+            
+    //       </Routes>
+    //     </main>
+    
+    //   </div>
+    // </Router>
   );
 }
 
