@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from '../../Components/Header/Header';
 
 const CategoryNews = () => {
-    const { name } = useParams();
+    const { id } = useParams();
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -13,7 +13,7 @@ const CategoryNews = () => {
     useEffect(() => {
         const fetchCategoryNews = async () => {
             try {
-                const response = await axios.get(`https://855637b89fc9ec39.mokky.dev/news?category=${name}`);
+                const response = await axios.get(`https://855637b89fc9ec39.mokky.dev/news?category=${id}`);
                 setNews(response.data);
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
@@ -23,7 +23,7 @@ const CategoryNews = () => {
         };
 
         fetchCategoryNews();
-    }, [name]);
+    }, [id]);
 
     if (loading) return <div className='div_load'>
      <div class="col-3">
@@ -39,13 +39,15 @@ const CategoryNews = () => {
         <div className="container1">
             <Header />
             <div className="tabs">
-                <Link style={{backgroundColor:'#19B886'}} to="/categories" className="tab yellow">← Назад к категориям</Link>
+                <Link style={{backgroundColor:'#19B886'}} to="/category" className="tab yellow"> Назад к категориям</Link>
             </div>
+
+   
 
             <div className="row1">
                 {news.map(item => (
                     <div key={item.id} className="col">
-                        <Link to={`/news/${item.id}`} className="news-link">
+                        <Link to={`/container/${item.id}`} className="news-link">
                             <div className='col_text'> 
                                 <h3 className="news-title">{item.title}</h3>
                                 <p className="news-date">{item.date}</p>

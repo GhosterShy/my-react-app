@@ -72,7 +72,7 @@ const Main = () => {
                 placeholder="Поиск..."
                 defaultValue={query}
                 onChange={handleSearch}
-                style={{width: "200px" ,margin:'8px'}}
+                style={{width: "200px" ,margin:'8px', padding:'4px',borderRadius:'5px'}}
               />
           </div>
       </div>
