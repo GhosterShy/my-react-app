@@ -8,49 +8,49 @@ const Category = () => {
         { 
             id: 'all', 
             name: 'Все новости', 
-            icon: 'fas fa-home',
+            icon: '/icons/home.png',
             path: '/'
         },
         { 
             id: 'football', 
             name: 'Футбол', 
-            icon: 'fas fa-futbol',
-            path: '/category/football'
+            icon: '/icons/foot.png',
+            path: '/category/Футбол'
         },
         { 
             id: 'basketball', 
             name: 'Баскетбол', 
-            icon: 'fas fa-basketball-ball',
-            path: '/category/basketball'
+            icon: '/icons/basket.png',
+            path: '/category/Баскетбол'
         },
         { 
             id: 'rugby', 
             name: 'Регби', 
-            icon: 'fas fa-football-ball',
-            path: '/category/rugby'
+            icon: '/icons/regbi.png',
+            path: '/category/Регби'
         },
         { 
             id: 'hockey', 
             name: 'Хоккей', 
-            icon: 'fas fa-hockey-puck',
-            path: '/category/hockey'
+            icon: '/icons/hokkey.png',
+            path: '/category/Хоккей'
         },
         { 
             id: 'esports', 
             name: 'Киберспорт', 
-            icon: 'fas fa-gamepad',
-            path: '/category/esports'
+            icon: '/icons/CyberSport.png',
+            path: '/category/Киберспорт'
         },
         { 
             id: 'boxing', 
             name: 'Бокс', 
-            icon: 'fas fa-boxing-glove',
-            path: '/category/boxing'
+            icon: '/icons/boxing.png',
+            path: '/category/Бокс'
         },
         { 
             id: 'mma', 
             name: 'Mix Fight', 
-            icon: 'fas fa-octagon',
+            icon: '/icons/mix.png',
             path: '/category/mma'
         }
     ];
@@ -66,11 +66,11 @@ const Category = () => {
                 {categories.map(category => (
                     <Link 
                         key={category.id} 
-                        to={`/category/${category.name}`}
+                        to={`${category.path}`}
                         className="category-link"
                     >
                         <div className="category-item">
-                            <i className={category.icon + " category-icon"}></i>
+                            <img src={category.icon}  width={32} height={32} />
                             <p className="title_icon">{category.name}</p>
                         </div>
                     </Link>

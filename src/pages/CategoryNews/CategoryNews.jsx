@@ -4,27 +4,17 @@ import axios from 'axios';
 import Header from '../../Components/Header/Header';
 
 const CategoryNews = () => {
-    const { id } = useParams();
+    const { name } = useParams();
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [categoryName, setCategoryName] = useState('');
 
-    const categoryNames = {
-        football: 'Футбол',
-        basketball: 'Баскетбол',
-        rugby: 'Регби',
-        hockey: 'Хоккей',
-        esports: 'Киберспорт',
-        boxing: 'Бокс',
-        mma: 'Mix Fight'
-    };
+
 
     useEffect(() => {
         const fetchCategoryNews = async () => {
             try {
-                const response = await axios.get(`https://855637b89fc9ec39.mokky.dev/news?category=${id}`);
+                const response = await axios.get(`https://855637b89fc9ec39.mokky.dev/news?category=${name}`);
                 setNews(response.data);
-                setCategoryName(categoryNames[id] || 'Категория');
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
             } finally {
@@ -33,7 +23,7 @@ const CategoryNews = () => {
         };
 
         fetchCategoryNews();
-    }, [id]);
+    }, [name]);
 
     if (loading) return <div className='div_load'>
      <div class="col-3">
