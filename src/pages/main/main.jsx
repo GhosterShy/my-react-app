@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styles from './main.css';
 import Header from '../../Components/Header/Header';
+import { useSearchParams } from "react-router-dom";
 
 const Main = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("q") || ""; 
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -23,6 +26,30 @@ const Main = () => {
     fetchNews();
   }, []);
 
+
+  const filteredNews = news.filter((item) => {
+    const searchText = query.toLowerCase();
+
+    return (
+      item.title.toLowerCase().includes(searchText) ||
+      item.category.toLowerCase().includes(searchText)
+    );
+  });
+
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+
+    if (value) {
+      setSearchParams({ q: value });
+    } else {
+      setSearchParams({});
+    }
+  };
+
+
+  
+
   if (loading) return <div className='div_load'>
      <div class="col-3">
         <div class="snippet" data-title="dot-rolling">
@@ -38,10 +65,20 @@ const Main = () => {
       <Header />
       <div className="tabs">
         <div className="tab">Все новости</div>
+        
+            <div style={{display:'flex',justifyContent:'center'}}>
+              <input
+                type="text"
+                placeholder="Поиск..."
+                defaultValue={query}
+                onChange={handleSearch}
+                style={{width: "200px" ,margin:'8px'}}
+              />
+          </div>
       </div>
 
       <div className="row1">
-        {news.map(item => (
+        {filteredNews.map(item => (
           <div key={item.id} className="col">
             <Link to={`/container/${item.id}`} className="news-link">
               <div className='col_text'> 
