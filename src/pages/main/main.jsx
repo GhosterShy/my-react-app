@@ -43,7 +43,7 @@ const Main = () => {
       <div className="row1">
         {news.map(item => (
           <div key={item.id} className="col">
-            <Link to={`/container/${item.id}`} className="news-link">
+            <Link to={`/container/${item.id}`} state={item} className="news-link">
               <div className='col_text'> 
                 <h3 className="news-title">{item.title}</h3>
                 <p className="news-date">{item.date}</p>
