@@ -130,6 +130,9 @@ body {
 
 input:focus {
   outline: none;
+  transition: 0.2s;
+  box-shadow: none;
+  border-color: #007bff;
 }
 
 

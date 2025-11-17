@@ -3,9 +3,10 @@ import Container from '../pages/Container/Container';
 import AddPost from '../pages/AddPost/AddPost';
 import Category from '../pages/Category/Category';
 import CategoryNews from '../pages/CategoryNews/CategoryNews';
+import Update from '../pages/Update/Update'
 
 
-import { HOME_PAGE_ROUTE, CONTAINER_PAGE_ROUTE ,ADD_POST_PAGE_ROUTE,CATEGORY_PAGE_ROUTE,CATEGORY_NEWS_PAGE_ROUTE} from './consts';
+import { HOME_PAGE_ROUTE, CONTAINER_PAGE_ROUTE ,ADD_POST_PAGE_ROUTE,CATEGORY_PAGE_ROUTE,CATEGORY_NEWS_PAGE_ROUTE,UPDATE_PAGE_ROUTE} from './consts';
 
 export const routes = [
   {
@@ -27,5 +28,9 @@ export const routes = [
   {
     path: CATEGORY_NEWS_PAGE_ROUTE,
     element:CategoryNews,
+  },
+  {
+    path:UPDATE_PAGE_ROUTE,
+    element:Update,
   }
 ];

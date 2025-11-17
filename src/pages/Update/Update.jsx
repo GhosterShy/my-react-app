@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "../Update/Update.css"
+import "./Update.css"
 
 const Update = () => {
     const { id } = useParams();
@@ -74,6 +74,8 @@ const Update = () => {
     }
 
     return (
+
+    
         <form className="news-form" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="news-id">ID Новости:</label>
