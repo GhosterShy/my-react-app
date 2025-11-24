@@ -10,13 +10,28 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q") || ""; 
+  const [authorized, setAuthorized] = useState(true);
+  const token = localStorage.getItem('authToken');
+
+
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('https://855637b89fc9ec39.mokky.dev/news');
+        const response = await axios.get('https://855637b89fc9ec39.mokky.dev/news',{
+          headers: { 
+            Authorization: `Bearer ${token}`
+          }
+        });
         setNews(response.data);
+        setAuthorized(true);
+
+
       } catch (error) {
+        if (error.response && error.response.status === 401) {
+          setAuthorized(false);
+          console.log('Пользователь не авторизован. Пожалуйста, войдите в систему.');
+        } else
         console.error('Ошибка загрузки новостей:', error);
       } finally {
         setLoading(false);
@@ -78,6 +93,16 @@ const Main = () => {
       </div>
 
       <div className="row1">
+
+        {!authorized && (
+          <div style={{ textAlign: 'center', width: '100%',height:'100px', display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'8px' }}>
+          <p style={{ textAlign: 'center', width: '100%' }}>не авторизован</p>
+          <Link to={'/login'}>Авторизоваться</Link>
+          <Link to={'/register'}>Регистрация</Link>
+          </div>
+        )}
+
+
         {filteredNews.map(item => (
           <div key={item.id} className="col">
             <Link to={`/container/${item.id}`} state={item} className="news-link">

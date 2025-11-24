@@ -8,14 +8,16 @@ import AddPost from './pages/AddPost/AddPost';
 import "./App.css"
 import { BrowserRouter } from 'react-router-dom';
 import AppRout from './Components/AppRoute';
+import { AuthProvider } from './Components/AuthContext';
 
 
 function App() {
   return (
-
+<AuthProvider>
  <BrowserRouter>
    <AppRout />
 </BrowserRouter>
+</AuthProvider>
 
     // <Router>
     //   <div className="App">
