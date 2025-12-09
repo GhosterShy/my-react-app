@@ -10,7 +10,7 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q") || ""; 
-  const [authorized, setAuthorized] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
   const token = localStorage.getItem('authToken');
 
 
@@ -23,8 +23,12 @@ const Main = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        setNews(response.data);
-        setAuthorized(true);
+       
+        if (token){
+          setNews(response.data);
+          setAuthorized(true);
+        }
+        
 
 
       } catch (error) {

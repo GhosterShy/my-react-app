@@ -12,7 +12,7 @@ export function AuthProvider({children})
 
     const register = async (email, password) => {
       try {
-      const response = await fetch("https://855637b89fc9ec39.mokky.dev/register", {
+      const response = await fetch("http://localhost:8080/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -39,7 +39,7 @@ export function AuthProvider({children})
 
     const login = async (email, password) => {
       try {
-        const response = await fetch("https://855637b89fc9ec39.mokky.dev/auth", {
+        const response = await fetch("http://localhost:8080/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
